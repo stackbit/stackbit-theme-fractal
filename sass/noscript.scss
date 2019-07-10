@@ -1,0 +1,32 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/vendor';
+@import 'libs/breakpoints';
+@import 'libs/html-grid';
+
+/*
+	Fractal by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Header */
+
+	#header {
+		body.is-preload & {
+			.content {
+				@include vendor('transform', 'none');
+				opacity: 1;
+			}
+
+			.image {
+				@include vendor('transform', 'none');
+				opacity: 1;
+
+				img {
+					opacity: 1;
+				}
+			}
+		}
+	}

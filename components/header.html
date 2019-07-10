@@ -1,0 +1,17 @@
+<!-- Header -->
+<header id="header">
+    <div class="content">
+        <h1><a href="{% if site.data.header.title_url | starts_with("#") %}{{ site.data.header.title_url }}{% else %}{{ site.data.header.title_url | relative_url }}{% endif %}">{{ site.title }}</a></h1>
+        {{ site.data.header.subtitle | markdownify }}
+        {% if site.data.header.actions %}
+            <ul class="actions">
+                {% for action in site.data.header.actions %}
+                    <li><a href="{% if action.url | starts_with('#') %}{{ action.url }}{% else %}{{ action.url | link | relative_url }}{% endif %}" class="button{{ " primary" if action.is_primary }}{% if action.icon %} icon {{ action.icon }}{% endif %}{{ " scrolly" if action.is_scrolly }}">{{ action.label }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    {% if site.data.header.img %}
+        <div {{ classNames("image", {"phone": site.data.header.img.phone_border}) }}><div class="inner"><img src="{{ site.data.header.img.path | relative_url }}" alt="" /></div></div>
+    {% endif %}
+</header>

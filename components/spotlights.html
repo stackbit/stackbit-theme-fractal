@@ -1,0 +1,27 @@
+<!-- Two -->
+<section id="{{ include_dict.section.section_id }}" class="wrapper">
+    <div class="inner alt">
+        {% if include_dict.section.spotlights %}
+            {% for spotlight in include_dict.section.spotlights %}
+                <section class="spotlight">
+                    {% if spotlight.image %}
+                        <div class="image"><img src="{{ spotlight.image | relative_url }}" alt="" /></div>
+                    {% endif %}
+                    <div class="content">
+                        <h3>{{ spotlight.title }}</h3>
+                        {{ spotlight.text | markdownify }}
+                    </div>
+                </section>
+            {% endfor %}
+        {% endif %}
+        {% if include_dict.section.icons %}
+            <section class="special">
+                <ul class="icons labeled">
+                    {% for item in include_dict.section.icons %}
+                        <li><span class="icon {{ item.icon }}"><span class="label">{{ item.title }}</span></span></li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+    </div>
+</section>

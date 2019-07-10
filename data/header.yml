@@ -1,0 +1,18 @@
+title_url: "#"
+subtitle: |-
+    Nibh sed aliquam, cursus arcu aliquet  
+    natoque rhoncus ut non in Aliquet
+actions:
+  - label: Download
+    icon: fa-download
+    url: elements.md
+    is_primary: true
+    is_scrolly: false
+  - label: Learn More
+    icon: fa-chevron-down
+    url: "#one"
+    is_primary: false
+    is_scrolly: true
+img:
+  path: images/screen.jpg
+  phone_border: true

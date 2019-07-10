@@ -1,0 +1,11 @@
+<!-- One -->
+<section id="{{ include_dict.section.section_id }}" class="wrapper {{ include_dict.section.background_style }} special">
+    <header class="major">
+        <h2>{{ include_dict.section.title | nl2br | safe }}</h2>
+    </header>
+    <ul class="icons major">
+        {% for item in include_dict.section.icons %}
+            <li><span class="icon {{ item.icon }}"><span class="label">{{ item.title }}</span></span></li>
+        {% endfor %}
+    </ul>
+</section>

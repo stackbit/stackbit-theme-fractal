@@ -1,0 +1,331 @@
+stackbitVersion: ~0.2.34
+uploadDir: images
+metadata:
+  title: Fractal
+  description: a single page mobile application marketing theme
+  author: Pixelarity
+  authorURL: 'https://pixelarity.com'
+  palettes:
+    blue:
+      images:
+        small: images/demo-blue-256x192.png
+        large: images/demo-blue-1024x768.png
+    magenta:
+      images:
+        small: images/demo-magenta-256x192.png
+        large: images/demo-magenta-1024x768.png
+    purple:
+      images:
+        small: images/demo-purple-256x192.png
+        large: images/demo-purple-1024x768.png
+models:
+  config:
+    type: config
+    label: Config
+    fields:
+      - type: enum
+        name: palette
+        label: Color Palette
+        options:
+          - blue
+          - magenta
+          - purple
+        required: true
+        description: The color palette used in the theme
+      - type: object
+        name: palettes
+        label: Palettes
+        hidden: true
+        fields:
+          - type: palette
+            name: blue
+            label: Blue
+          - type: palette
+            name: magenta
+            label: Magenta
+          - type: palette
+            name: purple
+            label: Purple
+  header:
+    type: data
+    file: header.yml
+    label: Header Configuration
+    fields:
+      - type: string
+        name: title_url
+        label: Title URL
+        widget: url
+        description: The link used in the page title
+      - type: markdown
+        name: subtitle
+        label: Header Subtitle
+        description: The text displayed below the page title
+      - type: list
+        name: actions
+        label: Header Actions
+        description: The action buttons displayed in the page header
+        items:
+          type: action
+      - type: object
+        name: img
+        label: Header Image
+        fields:
+          - type: image
+            name: path
+            label: Image
+          - type: boolean
+            name: phone_border
+            label: Header Image Phone Border
+            default: false
+            description: Puts a phone border around the header image
+  footer:
+    type: data
+    file: footer.yml
+    label: Footer Configuration
+    fields:
+      - type: list
+        name: social_icons
+        label: Social Media Icons
+        items:
+          type: object
+          labelField: title
+          fields:
+            - type: string
+              name: title
+              label: Icon Title
+              required: true
+            - type: string
+              name: icon
+              label: Icon
+              description: Font Awesome Icon
+            - type: string
+              name: url
+              label: Icon URL
+              widget: url
+      - type: string
+        name: copyright
+        label: Footer Copyright
+        description: The copyright text displayed in the page footer.
+      - type: list
+        name: links
+        label: Links
+        description: A list of links displayed in the footer.
+        items:
+          type: object
+          labelField: text
+          fields:
+            - type: string
+              name: text
+              label: Link text
+            - type: string
+              name: url
+              label: URL
+              widget: url
+            - type: boolean
+              name: new_window
+              label: Open in new window
+              default: true
+  home:
+    type: page
+    label: Home
+    hideContent: true
+    singleInstance: true
+    file: index.md
+    template: home
+    fields:
+      - type: string
+        name: title
+        label: Page Title
+      - type: list
+        name: sections
+        label: Sections
+        description: Home sections
+        items:
+          type: reference
+          labelField: title
+          models:
+            - icons
+            - spotlights
+            - cta
+  elements:
+    type: page
+    label: Elements
+    template: elements
+    singleInstance: true
+    file: elements.md
+    hideContent: true
+    fields:
+      - type: string
+        name: title
+        label: Page Title
+        required: true
+  action:
+    type: object
+    label: Action
+    labelField: label
+    fields:
+      - type: string
+        name: label
+        label: Button Label
+      - type: string
+        name: icon
+        label: Button Icon
+        description: Font Awesome Icon
+      - type: string
+        name: url
+        label: Button URL
+        widget: url
+      - type: boolean
+        name: is_primary
+        label: Is Primary
+        default: false
+        description: Gives the button a primary color scheme
+      - type: boolean
+        name: is_scrolly
+        label: Is Scrolly
+        default: false
+        description: adds a scroll animation (enable if button URL is set to a section ID)
+  section:
+    type: object
+    label: Section
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Section Title
+        required: true
+        description: >-
+          The title displayed at the top of the section (Also used by the CMS,
+          even if no title is displayed in the section)
+      - type: string
+        name: section_id
+        label: Section ID
+        required: true
+      - type: string
+        name: component
+        label: Section Component
+        required: true
+        hidden: true
+  icons:
+    type: object
+    label: Icons Section
+    extends:
+      - section
+    fields:
+      - name: title
+        default: Icons Section
+      - name: section_id
+        default: one
+      - name: component
+        const: icons.html
+      - type: enum
+        name: background_style
+        label: Background Style
+        options:
+          - style1
+          - style2
+          - style3
+          - style4
+        required: true
+        description: The color style for the background
+      - type: list
+        name: icons
+        label: Icons
+        description: Icons displayed at the bottom of the section
+        items:
+          type: icon
+  spotlights:
+    type: object
+    label: Spotlights Section
+    extends:
+      - section
+    fields:
+      - name: title
+        default: Spotlights Section
+      - name: section_id
+        default: two
+      - name: component
+        const: spotlights.html
+      - type: list
+        name: spotlights
+        label: Spotlight Sections
+        items:
+          type: object
+          labelField: title
+          fields:
+            - type: string
+              name: title
+              label: Spotlight Title
+              required: true
+            - type: markdown
+              name: text
+              label: Spotlight Text
+              description: The text displayed below the spotlight title
+            - type: image
+              name: image
+              label: Spotlight Image
+      - type: list
+        name: icons
+        label: Icons
+        description: Icons displayed at the bottom of the section
+        items:
+          type: icon
+  cta:
+    type: object
+    label: CTA Section
+    extends:
+      - section
+    fields:
+      - name: title
+        default: CTA Section
+      - name: section_id
+        default: three
+      - name: component
+        const: cta.html
+      - type: markdown
+        name: subtitle
+        label: Section Subtitle
+        description: The text displayed below the section title
+      - type: enum
+        name: background_style
+        label: Background Style
+        options:
+          - style1
+          - style2
+          - style3
+          - style4
+        required: true
+        description: The color style for the background
+      - type: list
+        name: actions
+        label: CTA Action Buttons
+        items:
+          type: action
+  icon:
+    type: object
+    label: Icon
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Icon Title
+      - type: string
+        name: icon
+        label: Icon
+        description: Font Awesome Icon
+  palette:
+    type: object
+    label: Palette
+    fields:
+      - type: object
+        name: sass
+        label: SASS
+        fields:
+          - type: color
+            name: color
+            label: Color
+stackbit_banner:
+  show_banner: true
+  name: Fractal
+  create_url: 'https://app.stackbit.com/wizard?theme=fractal'
+  github_url: 'https://github.com/stackbithq/stackbit-theme-fractal'

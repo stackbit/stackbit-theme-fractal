@@ -1,0 +1,14 @@
+<!-- Three -->
+<section id="{{ include_dict.section.section_id }}" class="wrapper {{ include_dict.section.background_style }} special">
+    <header class="major">
+        <h2>{{ include_dict.section.title | nl2br | safe }}</h2>
+        {{ include_dict.section.subtitle | markdownify }}
+    </header>
+    {% if include_dict.section.actions %}
+        <ul class="actions special">
+            {% for action in include_dict.section.actions %}
+                <li><a href="{% if action.url | starts_with('#') %}{{ action.url }}{% else %}{{ action.url | link | relative_url }}{% endif %}" class="button{{ " primary" if action.is_primary }}{% if action.icon %} icon {{ action.icon }}{% endif %}{{ " scrolly" if action.is_scrolly }}">{{ action.label }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>

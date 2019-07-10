@@ -1,0 +1,5 @@
+header .content img,
+.wrapper .major img,
+.wrapper .inner .spotlight .content img{
+    max-width: 100%;
+}

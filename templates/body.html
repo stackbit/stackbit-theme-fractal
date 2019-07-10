@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    {% if page.params.template == "home" %}
+        {% include "header.html" %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    {% include "footer.html" %}
+
+{% endblock %}

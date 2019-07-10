@@ -1,0 +1,15 @@
+social_icons:
+  - title: Facebook
+    icon: fa-facebook
+    url: "#"
+  - title: Twitter
+    icon: fa-twitter
+    url: "#"
+  - title: Instagram
+    icon: fa-instagram
+    url: "#"
+copyright: "&copy; Untitled."
+links:
+  - text: Made with Stackbit
+    url: https://www.stackbit.com
+    new_window: true

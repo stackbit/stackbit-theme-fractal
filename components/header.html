@@ -6,7 +6,7 @@
         {% if site.data.header.actions %}
             <ul class="actions">
                 {% for action in site.data.header.actions %}
-                    <li><a href="{% if action.url | starts_with('#') %}{{ action.url }}{% else %}{{ action.url | link | relative_url }}{% endif %}" class="button{{ " primary" if action.is_primary }}{% if action.icon %} icon {{ action.icon }}{% endif %}{{ " scrolly" if action.is_scrolly }}">{{ action.label }}</a></li>
+                    <li><a href="{% if action.url | starts_with('#') %}{{ action.url }}{% else %}{{ action.url | relative_url }}{% endif %}" class="button{{ " primary" if action.is_primary }}{% if action.icon %} icon {{ action.icon }}{% endif %}{{ " scrolly" if action.is_scrolly }}">{{ action.label }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}

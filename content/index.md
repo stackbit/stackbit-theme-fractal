@@ -53,7 +53,7 @@ sections:
         is_scrolly: false
         icon: fa-download
       - label: Learn More
-        url: elements.md
+        url: "/elements"
         is_primary: false
         is_scrolly: false
     type: cta

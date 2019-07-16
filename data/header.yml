@@ -5,7 +5,7 @@ subtitle: |-
 actions:
   - label: Download
     icon: fa-download
-    url: elements.md
+    url: "/elements"
     is_primary: true
     is_scrolly: false
   - label: Learn More

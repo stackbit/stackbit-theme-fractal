@@ -1,5 +1,12 @@
-stackbitVersion: ~0.2.34
+stackbitVersion: ~0.2.0
+ssgName: unibit
+buildCommand: unibit build
+publishDir: output
+staticDir: static
 uploadDir: images
+dataDir: data
+pagesDir: content
+pageLayoutKey: layout
 metadata:
   title: Fractal
   description: a single page mobile application marketing theme
@@ -329,5 +336,3 @@ stackbit_banner:
   name: Fractal
   create_url: 'https://app.stackbit.com/create?theme=fractal'
   github_url: 'https://github.com/stackbithq/stackbit-theme-fractal'
-pagesDir: content
-staticDir: static
